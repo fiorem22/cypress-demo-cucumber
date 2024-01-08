@@ -1,0 +1,25 @@
+{
+  "name": "cypress-e2e-web-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "runChrome": "cypress run"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.6.2"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "esbuild": "^0.19.11"
+  },
+  "cypress-cucumber-preprocessor":{
+    "stepDefinitions":[
+      "cypress/e2e/definition-steps/*.{js,ts}"
+    ]
+  }
+}
