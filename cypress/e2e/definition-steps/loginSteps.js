@@ -7,27 +7,20 @@ Given("the user is on the login page", () => {
     cy.visit("/");
 });
 
-When("the user enters the username {string}", (user) => {
-    loginPage.writeUser(user);
-});
-
-When("the user enters the password {string}", (password) => {
-    loginPage.writePassword(password);
-});
-
-When("clicks the {string} button",()=>{
-    loginPage.btnClickLogin();
-});
-
-Given("the user is on the inventory page", () => {
-    // cy.visit('https://www.saucedemo.com/inventory.html');
-});
-
-When("the user click the {string} backpackBtn", () => {
-    inventoryPage.clickAddBackpack();
+When("User enters the username {string}, the password {string}, and clicks on the login button" , (username, password) =>{
+    loginPage.submitLogin(username, password);
 })
 
-When("the user click the {string} addcartBtn", () => {
-    inventoryPage.clickAddCart();
+Then("The user should be redirected to the main page", () => {
+    cy.url().should('contains', 'inventory.html');
 })
+
+Then("The error message {string} is displayed", (errorMessage) => {
+    loginPage.elements.errorMessage().should("have.text", errorMessage);
+})
+
+// Then("The error message {string} is displayed", (errorMessage) => {
+//   loginPage.elements.errorMessage().should("have.text", errorMessage);
+// });
+
 

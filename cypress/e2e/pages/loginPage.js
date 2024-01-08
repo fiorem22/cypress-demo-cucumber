@@ -1,19 +1,14 @@
 class loginPage{
     elements = {
-        username : ()  =>  cy.get("#user-name"),
-        password : ()  => cy.get("#password"),
+        usernameInput : ()  =>  cy.get("#user-name"),
+        passwordInput : ()  => cy.get("#password"),
         clickLogin : () => cy.get("#login-button")
+        errorMessage : () => cy.get('[data-test="error"]')
     }
 
-    writeUser(user){
-        this.elements.username().type(user);
-    }
-
-    writePassword(password){
-        this.elements.password().type(password);
-    }
-
-    btnClickLogin(){
+    submitLogin(username, password){
+        this.elements.usernameInput().type(username);
+        this.elements.passwordInput().type(password);
         this.elements.clickLogin().click();
     }
 }
